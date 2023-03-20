@@ -13,10 +13,21 @@ cargo check --bin build_check
 > codegen.rs
 
 ```rust
+Build project
 cargo build --bin codegen
 
 Check for errors
 cargo check --bin codegen
+```
+
+> analyzer.rs
+
+```rust
+Build project
+cargo build --bin analyzer
+
+Check for errors
+cargo check --bin analyzer
 ```
 
 [Multi binary / executable project](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#configuring-a-target)
