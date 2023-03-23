@@ -10,9 +10,9 @@ description = "This is multy project repo contained of [build_check.rs, codegen.
 reqwest = { version = "0.11.4", features = ["blocking"] }
 serde = {version = "1.0.157", features = ["derive"]}
 serde_json = "1.0.94"
+dotenvy = "0.15.6"
 
 #AST deps
 syn = "2.0.2"
 walkdir = "2.3.3"
 quote = "1.0.26"
-dotenvy = "0.15.6"

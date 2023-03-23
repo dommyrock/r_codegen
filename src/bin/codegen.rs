@@ -1,24 +1,9 @@
-use std::env;
+pub mod models;
+
+use crate::models::gpt_response::GptResponse;
 use dotenvy::dotenv;
-use serde::{Deserialize, Serialize};
-use serde_json::json;
-
-#[derive(Debug, Deserialize)]
-struct GPTResponse {
-    choices: Vec<GPTChoice>,
-}
-
-#[derive(Debug, Deserialize)]
-struct GPTChoice {
-    text: String,
-}
-
-#[derive(Serialize, Deserialize)]
-struct GptRequest {
-    model: String,
-    age: u8,
-    phones: Vec<String>,
-}
+use serde_json::{from_reader, from_str, json};
+use std::{env, fs::File, io::BufReader};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     dotenv().expect(".env file not found");
@@ -39,18 +24,44 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     })
     .to_string();
 
-    let client = reqwest::blocking::Client::new();
-    let response = client
-        .post("https://api.openai.com/v1/chat/completions")
-        .header("Content-Type", "application/json")
-        .header("Authorization", format!("Bearer {}", api_key))
-        .body(body)
-        .send()?
-        .text()?;
+    //This  works !!!
+    //REQUEST INITIAL CODE GENERATION BASED ON PROMPT
+    // let client = reqwest::blocking::Client::new();
+    // let response = client
+    //     .post("https://api.openai.com/v1/chat/completions")
+    //     .header("Content-Type", "application/json")
+    //     .header("Authorization", format!("Bearer {}", api_key))
+    //     .body(body)
+    //     .send()?
+    //     .text()?;
 
-    //let gpt_response: GPTResponse = serde_json::from_str(&response)?;
-    //println!("{:#?}", gpt_response);
+    //Test reading json response and mapping it to Vec<strings>by
+    //newline and copy to file where we will init new project and build it untill success!
 
+
+
+    // EXTRACTING + FORMATING CODE FROM RESPONSE 
+    let file = File::open("turbo3.5_response.json").expect("This must be here");
+    let reader = BufReader::new(file);
+
+    match from_reader::<_, GptResponse>(reader) {
+        Ok(resp) => {
+            _ = &resp.choices[0]
+                .message
+                .content
+                .lines()
+                .map(|x| x)
+                .collect::<Vec<&str>>()
+                .into_iter()
+                .for_each(|c| {
+                    //Skip MD code blocks
+                    if !c.starts_with("```") && !c.is_empty() {
+                        println!("{}\n", c);
+                    }
+                });
+        }
+        Err(_) => eprint!("Error Parsing JSON Response..."),
+    }
     Ok(())
 }
 
