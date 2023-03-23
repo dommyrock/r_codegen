@@ -4,6 +4,11 @@ use syn::{DeriveInput};
 use walkdir::{DirEntry, WalkDir};
 
 //docs > https://docs.rs/syn/latest/syn/
+//or 
+//https://tree-sitter.github.io/tree-sitter/ (used even by sourcegraph so it's pretty good for rust or general purpose)
+
+//Other tooling (Git diff)
+//https://github.com/dandavison/delta , https://dandavison.github.io/delta/usage.html
 
 /*Example 
  * let source_code = r#"

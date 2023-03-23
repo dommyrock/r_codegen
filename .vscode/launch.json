@@ -12,7 +12,7 @@
             "args": [
                "build",
                "--bin=build_check",
-               "--package=r_codegegen"
+               "--package=r_codegen"
             ],
             "filter": {
                "name": "build_check",
@@ -31,7 +31,7 @@
                "test",
                "--no-run",
                "--bin=build_check",
-               "--package=r_codegegen"
+               "--package=r_codegen"
             ],
             "filter": {
                "name": "build_check",
@@ -49,7 +49,7 @@
             "args": [
                "build",
                "--bin=codegen",
-               "--package=r_codegegen"
+               "--package=r_codegen"
             ],
             "filter": {
                "name": "codegen",
@@ -68,7 +68,7 @@
                "test",
                "--no-run",
                "--bin=codegen",
-               "--package=r_codegegen"
+               "--package=r_codegen"
             ],
             "filter": {
                "name": "codegen",
