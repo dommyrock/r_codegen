@@ -1,0 +1,17 @@
+{
+  "id": "chatcmpl-6y0CaU7GVXRNUcRRot7ZrLq1mmCPh",
+  "object": "chat.completion",
+  "created": 1679758476,
+  "model": "gpt-3.5-turbo-0301",
+  "usage": { "prompt_tokens": 84, "completion_tokens": 89, "total_tokens": 173 },
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": "Sure, here's the fixed code:\n\n```rust\nuse std::io;\n\nfn main() {\n    let mut input = String::new();\n    match io::stdin().read_line(&mut input) {\n        Ok(_) => {\n            print!(\"{}\", input);\n        }\n        Err(error) => println!(\"Error: {}\", error),\n    }\n}\n``` \n\nThe only issue was a missing semicolon after the `use std::io` statement."
+      },
+      "finish_reason": "stop",
+      "index": 0
+    }
+  ]
+}

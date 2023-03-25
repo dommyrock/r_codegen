@@ -5,7 +5,7 @@ use std::process::Command;
 
 fn main() {
     let output = Command::new("cargo")
-        .args(&["build"]) //, "--release"
+        .args(&["check"]) //and after check has no ERRORs , "build --release"
         .output()
         .expect("Failed to build project");
 

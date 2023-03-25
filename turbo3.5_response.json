@@ -8,7 +8,7 @@
     {
       "message": {
         "role": "assistant",
-        "content": "\n\n```rust\nuse std::io;\n\nfn main() {\n    let mut input = String::new();\n    match io::stdin().read_line(&mut input) {\n        Ok(_) => {\n            print!(\"{}\", input);\n        }\n        Err(error) => println!(\"Error: {}\", error),\n    }\n}\n```"
+        "content": "\n\n```rust\nuse std::io\n\nfn main() {\n    let mut input = String::new();\n    match io::stdin().read_line(&mut input) {\n        Ok(_) => {\n            print!(\"{}\", input);\n        }\n        Err(error) => println!(\"Error: {}\", error),\n    }\n}\n```"
       },
       "finish_reason": "stop",
       "index": 0
